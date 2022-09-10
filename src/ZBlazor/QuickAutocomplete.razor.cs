@@ -82,10 +82,20 @@ namespace ZBlazor
 		/// </summary>
 		[Parameter] public string? TextField { get; set; } = "Text";
 
-		/// <summary>
-		/// Any additional class(es) to apply to the actual input box.
-		/// </summary>
-		[Parameter] public string? Class { get; set; }
+        /// <summary>
+        /// Items custom for render on item
+        /// </summary>
+        [Parameter] public string? RenderItemFields { get; set; } = "Text";
+
+        /// <summary>
+        /// Template string for render item
+        /// </summary>
+        [Parameter] public string? TemplateItemsRender { get; set; } = "";
+
+        /// <summary>
+        /// Any additional class(es) to apply to the actual input box.
+        /// </summary>
+        [Parameter] public string? Class { get; set; }
 
 		/// <summary>
 		/// Any additional class(es) to apply to the outer div containing the input.
@@ -887,15 +897,22 @@ namespace ZBlazor
 			}
 			else
 			{
+				//Custom type object
+				// trying to get custom data from many field if this is specified
+				// only for render item
+
 				if (TextField == null)
 				{
 					throw new ArgumentNullException(nameof(TextField));
 				}
 
-				SearchItems = Data.Where(i => i != null).Select(i => new SearchItem<TItem>
+				
+
+                SearchItems = Data.Where(i => i != null).Select(i => new SearchItem<TItem>
 				{
 					Text = i?.GetType()?.GetProperty(TextField)?.GetValue(i, null)?.ToString() ?? "",
-					DataObject = i!,
+					TextForRender = GetTextForRender(i), //i?.GetType()?.GetProperty(TextField)?.GetValue(i, null)?.ToString() ?? "",
+                    DataObject = i!,
 					Key = GetKeyValueOrDefault(i!)
 				}).ToList();
 			}
@@ -922,7 +939,35 @@ namespace ZBlazor
 			IsLoading = false;
 		}
 
-		private string GetKeyValueOrDefault(TItem item)
+		private string GetTextForRender(TItem item)
+		{
+            string m_TextForRender = "";
+            string[] FieldsForRender = null;
+            
+			if (TemplateItemsRender != null)
+            {
+                m_TextForRender = TemplateItemsRender;
+            }
+
+            if (RenderItemFields != null)
+			{
+				FieldsForRender = RenderItemFields.Split(",");
+                foreach (string FieldValue in FieldsForRender)
+                {
+                    m_TextForRender = m_TextForRender.Replace("{" + FieldValue + "}", item?.GetType()?.GetProperty(FieldValue)?.GetValue(item, null)?.ToString() ?? "");
+                    //m_TextForRender += m_TextForRender + " " + item?.GetType()?.GetProperty(FieldValue)?.GetValue(item, null)?.ToString() ?? "";
+                }
+            }
+			else
+			{
+				
+			}
+
+            return m_TextForRender;
+		}
+
+
+        private string GetKeyValueOrDefault(TItem item)
 		{
 			string? key = null;
 			if (string.IsNullOrWhiteSpace(KeyField))

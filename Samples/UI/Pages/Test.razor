@@ -1,0 +1,24 @@
+﻿@page "/test"
+
+<QuickAutocomplete TItem="TestData2.Item" 
+    Data="TestData2.dataForTest" 
+    KeyField="id" 
+    TextField="name"
+    RenderItemFields="id,name,description"
+    TemplateItemsRender="<ul>
+        <li><p>{id}</p></li>
+        <li><p class='text-muted''>{name}</p></li>
+        <li><small>{description}</small></li>
+    </ul>"
+    OtherMatchFields=@(new string[] {"description"})
+    ShowOtherMatches="true" 
+    ValueChanged="OnChangeItem" />
+
+<h6>Choose a country (Fuzzy)</h6>
+<QuickAutocomplete TItem="string" Data="TestData.CountryNames" />
+
+<h6>Choose a country (Contains)</h6>
+<QuickAutocomplete TItem="string" Data="TestData.CountryNames" FilterType="FilterType.Contains" />
+
+<h6>Choose a country (Starts With)</h6>
+<QuickAutocomplete TItem="string" Data="TestData.CountryNames" FilterType="FilterType.StartsWith" />

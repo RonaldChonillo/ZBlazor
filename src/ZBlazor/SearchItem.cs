@@ -7,7 +7,7 @@ namespace ZBlazor.QuickAutocomplete
 	/// <summary>
 	/// The container for an individual item in a QuickAutocomplete.
 	/// </summary>
-	public class SearchItem<TDataObject>
+	public partial class SearchItem<TDataObject>
 	{
 		#region FIELDS
 
