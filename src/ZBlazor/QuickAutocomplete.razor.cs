@@ -944,6 +944,11 @@ namespace ZBlazor
             string m_TextForRender = "";
             string[] FieldsForRender = null;
             
+			if (typeof(TItem) == typeof(string))
+			{
+
+			}
+
 			if (TemplateItemsRender != null)
             {
                 m_TextForRender = TemplateItemsRender;
@@ -960,8 +965,8 @@ namespace ZBlazor
             }
 			else
 			{
-				
-			}
+				m_TextForRender += item?.GetType()?.GetProperty(TextField)?.GetValue(item, null)?.ToString() ?? "";
+            }
 
             return m_TextForRender;
 		}

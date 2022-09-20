@@ -5,11 +5,11 @@
     KeyField="id" 
     TextField="name"
     RenderItemFields="id,name,description"
-    TemplateItemsRender="<ul>
-        <li><p>{id}</p></li>
-        <li><p class='text-muted''>{name}</p></li>
-        <li><small>{description}</small></li>
-    </ul>"
+    TemplateItemsRender="
+        <small>{id}</small>
+        <p>{name}</p>
+        <small>{description}</small>
+    "
     OtherMatchFields=@(new string[] {"description"})
     ShowOtherMatches="true" 
     ValueChanged="OnChangeItem" />

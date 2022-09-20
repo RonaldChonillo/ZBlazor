@@ -5,6 +5,7 @@
     <input type="@InputType"
            value="@InputValue"
            class="@(Class ?? QuickAutocompleteGlobalProperties.Class)"
+           autocomplete="off"
            @attributes="InputAttributes"
            @oninput="OnValueChange"
            @onkeydown="OnKeyDown"

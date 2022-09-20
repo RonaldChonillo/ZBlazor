@@ -20,12 +20,12 @@ namespace ZBlazor.QuickAutocomplete
 		{
 			if (!highlightMatches || Matches == null || string.IsNullOrWhiteSpace(TextForRender))
 			{
-				return (MarkupString)$"<span class\"zb-quick-autocomplete-filter-match\">{TextForRender}</span>";
+				return (MarkupString)$"<span class=\"zb-quick-autocomplete-filter-match\">{TextForRender}</span>";
 			}
 
 			if (highlightMatches && Matches != null && OtherMatchFieldValue == null && OtherMatchFieldValue == null)
 			{
-				return (MarkupString)$"<span class\"zb-quick-autocomplete-filter-match\">{GetMatchesMarkup(Matches, TextForRender)}</span>";
+				return (MarkupString)$"<span class=\"zb-quick-autocomplete-filter-match\">{GetMatchesMarkup(Matches, TextForRender)}</span>";
 			}
 
 			if (highlightMatches && showOtherMatches && Matches != null && OtherMatchFieldName != null && OtherMatchFieldValue != null)
@@ -38,7 +38,7 @@ namespace ZBlazor.QuickAutocomplete
 
 			_ = Text;
 
-			return (MarkupString)$"<span class\"zb-quick-autocomplete-filter-match\">{TextForRender}</span>";
+			return (MarkupString)$"<span class=\"zb-quick-autocomplete-filter-match\">{TextForRender}</span>";
 		}
 
 
