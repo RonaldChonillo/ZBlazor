@@ -3,11 +3,11 @@
     <PropertyGroup>
         <Description>A set of Blazor components with minimal JS.</Description>
         <VersionPrefix>1.0.0</VersionPrefix>
-        <Authors>Zachary Becknell</Authors>
+        <Authors>Zachary Becknell, Ronald Chonillo</Authors>
         <Copyright>Copyright © Zachary Becknell 2020</Copyright>
         <TreatWarningsAsError>true</TreatWarningsAsError>
         <PackageTags>blazor;autocomplete;fuzzy;input</PackageTags>
-        <PackageProjectUrl>https://github.com/zbecknell/ZBlazor</PackageProjectUrl>
+        <PackageProjectUrl>https://github.com/RonaldChonillo/ZBlazor</PackageProjectUrl>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <RepositoryUrl>https://github.com/zbecknell/ZBlazor</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
