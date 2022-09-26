@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk.Razor">
     <PropertyGroup>
-        <Description>A set of Blazor components with minimal JS.</Description>
+        <Description>Autocomplete component with custom template.</Description>
         <VersionPrefix>1.0.0</VersionPrefix>
         <Authors>Zachary Becknell, Ronald Chonillo</Authors>
         <Copyright>Copyright © Zachary Becknell 2020</Copyright>
@@ -19,6 +19,8 @@
         <IsPackable>true</IsPackable>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
         <RootNamespace>ZBlazor</RootNamespace>
+        <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+        <Title>ZBlazor Autocomplete</Title>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
         <DebugType>full</DebugType>

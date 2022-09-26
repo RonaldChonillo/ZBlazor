@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\ZBlazor\ZBlazor.csproj" />
+    <ProjectReference Include="..\..\src\ZBlazor\ZBlazorEx.csproj" />
     <ProjectReference Include="..\UI\UI.csproj" />
   </ItemGroup>
 </Project>
