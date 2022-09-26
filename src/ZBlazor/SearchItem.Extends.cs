@@ -36,7 +36,7 @@ namespace ZBlazor.QuickAutocomplete
 				return (MarkupString)result.ToString();
 			}
 
-			_ = Text;
+			//_ = TextForRender;
 
 			return (MarkupString)$"<span class=\"zb-quick-autocomplete-filter-match\">{TextForRender}</span>";
 		}

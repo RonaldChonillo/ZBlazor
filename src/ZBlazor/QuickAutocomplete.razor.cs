@@ -891,7 +891,8 @@ namespace ZBlazor
 				SearchItems = Data.Where(i => i != null).Select(i => new SearchItem<TItem>
 				{
 					Text = (i as string)!,
-					DataObject = i,
+                    TextForRender = (i as string)!,
+                    DataObject = i,
 					Key = GetKeyValueOrDefault(i)
 				}).ToList();
 			}
@@ -905,8 +906,6 @@ namespace ZBlazor
 				{
 					throw new ArgumentNullException(nameof(TextField));
 				}
-
-				
 
                 SearchItems = Data.Where(i => i != null).Select(i => new SearchItem<TItem>
 				{
@@ -946,8 +945,8 @@ namespace ZBlazor
             
 			if (typeof(TItem) == typeof(string))
 			{
-
-			}
+				//m_TextForRender = "666";
+            }
 
 			if (TemplateItemsRender != null)
             {
@@ -957,15 +956,27 @@ namespace ZBlazor
             if (RenderItemFields != null)
 			{
 				FieldsForRender = RenderItemFields.Split(",");
-                foreach (string FieldValue in FieldsForRender)
-                {
-                    m_TextForRender = m_TextForRender.Replace("{" + FieldValue + "}", item?.GetType()?.GetProperty(FieldValue)?.GetValue(item, null)?.ToString() ?? "");
-                    //m_TextForRender += m_TextForRender + " " + item?.GetType()?.GetProperty(FieldValue)?.GetValue(item, null)?.ToString() ?? "";
-                }
+
+				if (FieldsForRender.Length == 1)
+				{
+					//if (m_TextForRender == "")
+					//{
+					//	m_TextForRender = "{" + FieldsForRender[0] + "}";
+					//}
+					m_TextForRender += item?.GetType()?.GetProperty(TextField)?.GetValue(item, null)?.ToString() ?? "";
+				}
+				else
+				{
+					foreach (string FieldValue in FieldsForRender)
+					{
+						m_TextForRender = m_TextForRender.Replace("{" + FieldValue + "}", item?.GetType()?.GetProperty(FieldValue)?.GetValue(item, null)?.ToString() ?? "");
+						//m_TextForRender += m_TextForRender + " " + item?.GetType()?.GetProperty(FieldValue)?.GetValue(item, null)?.ToString() ?? "";
+					}
+				}
             }
 			else
 			{
-				m_TextForRender += item?.GetType()?.GetProperty(TextField)?.GetValue(item, null)?.ToString() ?? "";
+				
             }
 
             return m_TextForRender;
